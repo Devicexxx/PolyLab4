@@ -119,6 +119,14 @@ namespace PolyLab4 {
 	private: System::Windows::Forms::Label^ label22;
 	private: System::Windows::Forms::TextBox^ textBox10;
 	private: System::Windows::Forms::Button^ buttonOut5;
+private: System::Windows::Forms::PictureBox^ pictureBox1;
+private: System::Windows::Forms::Button^ button1;
+private: System::Windows::Forms::TextBox^ textBox11;
+private: System::Windows::Forms::Label^ label23;
+private: System::Windows::Forms::Button^ buttonPrint;
+private: System::Windows::Forms::TextBox^ textBoxPrint;
+private: System::Windows::Forms::TextBox^ textBox12;
+private: System::Windows::Forms::Button^ button2;
 
 	private:
 		/// <summary>
@@ -192,11 +200,20 @@ namespace PolyLab4 {
 			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
 			this->buttonOut5 = (gcnew System::Windows::Forms::Button());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
+			this->label23 = (gcnew System::Windows::Forms::Label());
+			this->buttonPrint = (gcnew System::Windows::Forms::Button());
+			this->textBoxPrint = (gcnew System::Windows::Forms::TextBox());
+			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
+			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			this->groupBox4->SuspendLayout();
 			this->groupBox5->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// buttonEnterRect
@@ -448,9 +465,9 @@ namespace PolyLab4 {
 			this->groupBox1->Controls->Add(this->textBoxHei);
 			this->groupBox1->Controls->Add(this->textBoxLen);
 			this->groupBox1->Controls->Add(this->buttonEnterRect);
-			this->groupBox1->Location = System::Drawing::Point(7, 17);
+			this->groupBox1->Location = System::Drawing::Point(8, 67);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(144, 359);
+			this->groupBox1->Size = System::Drawing::Size(144, 288);
 			this->groupBox1->TabIndex = 42;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Прямоугольник";
@@ -465,9 +482,9 @@ namespace PolyLab4 {
 			this->groupBox2->Controls->Add(this->textBoxSide);
 			this->groupBox2->Controls->Add(this->textBox4);
 			this->groupBox2->Controls->Add(this->buttonOut2);
-			this->groupBox2->Location = System::Drawing::Point(157, 17);
+			this->groupBox2->Location = System::Drawing::Point(158, 67);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(137, 359);
+			this->groupBox2->Size = System::Drawing::Size(137, 288);
 			this->groupBox2->TabIndex = 43;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Квадрат";
@@ -484,9 +501,9 @@ namespace PolyLab4 {
 			this->groupBox3->Controls->Add(this->textBoxBott);
 			this->groupBox3->Controls->Add(this->buttonOut3);
 			this->groupBox3->Controls->Add(this->buttonEnterTri);
-			this->groupBox3->Location = System::Drawing::Point(300, 17);
+			this->groupBox3->Location = System::Drawing::Point(301, 67);
 			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(139, 359);
+			this->groupBox3->Size = System::Drawing::Size(139, 288);
 			this->groupBox3->TabIndex = 44;
 			this->groupBox3->TabStop = false;
 			this->groupBox3->Text = L"Треугольник";
@@ -505,9 +522,9 @@ namespace PolyLab4 {
 			this->groupBox4->Controls->Add(this->textBoxY);
 			this->groupBox4->Controls->Add(this->textBoxX);
 			this->groupBox4->Controls->Add(this->buttonEnterCiar);
-			this->groupBox4->Location = System::Drawing::Point(445, 17);
+			this->groupBox4->Location = System::Drawing::Point(446, 67);
 			this->groupBox4->Name = L"groupBox4";
-			this->groupBox4->Size = System::Drawing::Size(148, 359);
+			this->groupBox4->Size = System::Drawing::Size(148, 288);
 			this->groupBox4->TabIndex = 45;
 			this->groupBox4->TabStop = false;
 			this->groupBox4->Text = L"Круг";
@@ -528,9 +545,9 @@ namespace PolyLab4 {
 			this->groupBox5->Controls->Add(this->textBoxb);
 			this->groupBox5->Controls->Add(this->textBoxa);
 			this->groupBox5->Controls->Add(this->buttonEnterElips);
-			this->groupBox5->Location = System::Drawing::Point(599, 17);
+			this->groupBox5->Location = System::Drawing::Point(600, 67);
 			this->groupBox5->Name = L"groupBox5";
-			this->groupBox5->Size = System::Drawing::Size(153, 359);
+			this->groupBox5->Size = System::Drawing::Size(153, 288);
 			this->groupBox5->TabIndex = 46;
 			this->groupBox5->TabStop = false;
 			this->groupBox5->Text = L"Элипс";
@@ -740,11 +757,85 @@ namespace PolyLab4 {
 			this->buttonOut5->Text = L"Вывод";
 			this->buttonOut5->UseVisualStyleBackColor = true;
 			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->pictureBox1->Location = System::Drawing::Point(887, 12);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(320, 318);
+			this->pictureBox1->TabIndex = 47;
+			this->pictureBox1->TabStop = false;
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(17, 39);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(143, 23);
+			this->button1->TabIndex = 28;
+			this->button1->Text = L"Ввод";
+			this->button1->UseVisualStyleBackColor = true;
+			// 
+			// textBox11
+			// 
+			this->textBox11->Location = System::Drawing::Point(166, 41);
+			this->textBox11->Name = L"textBox11";
+			this->textBox11->Size = System::Drawing::Size(123, 20);
+			this->textBox11->TabIndex = 33;
+			// 
+			// label23
+			// 
+			this->label23->AutoSize = true;
+			this->label23->Location = System::Drawing::Point(17, 23);
+			this->label23->Name = L"label23";
+			this->label23->Size = System::Drawing::Size(149, 13);
+			this->label23->TabIndex = 33;
+			this->label23->Text = L"Номер элемента в массиве";
+			// 
+			// buttonPrint
+			// 
+			this->buttonPrint->Location = System::Drawing::Point(887, 372);
+			this->buttonPrint->Name = L"buttonPrint";
+			this->buttonPrint->Size = System::Drawing::Size(123, 23);
+			this->buttonPrint->TabIndex = 33;
+			this->buttonPrint->Text = L"Нарисовать";
+			this->buttonPrint->UseVisualStyleBackColor = true;
+			// 
+			// textBoxPrint
+			// 
+			this->textBoxPrint->Location = System::Drawing::Point(887, 346);
+			this->textBoxPrint->Name = L"textBoxPrint";
+			this->textBoxPrint->Size = System::Drawing::Size(123, 20);
+			this->textBoxPrint->TabIndex = 48;
+			// 
+			// textBox12
+			// 
+			this->textBox12->Location = System::Drawing::Point(1084, 346);
+			this->textBox12->Name = L"textBox12";
+			this->textBox12->Size = System::Drawing::Size(123, 20);
+			this->textBox12->TabIndex = 50;
+			// 
+			// button2
+			// 
+			this->button2->Location = System::Drawing::Point(1084, 372);
+			this->button2->Name = L"button2";
+			this->button2->Size = System::Drawing::Size(123, 23);
+			this->button2->TabIndex = 49;
+			this->button2->Text = L"Поворот";
+			this->button2->UseVisualStyleBackColor = true;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1288, 639);
+			this->ClientSize = System::Drawing::Size(1219, 639);
+			this->Controls->Add(this->textBox12);
+			this->Controls->Add(this->button2);
+			this->Controls->Add(this->textBoxPrint);
+			this->Controls->Add(this->buttonPrint);
+			this->Controls->Add(this->label23);
+			this->Controls->Add(this->textBox11);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->groupBox5);
 			this->Controls->Add(this->groupBox4);
 			this->Controls->Add(this->groupBox3);
@@ -763,7 +854,9 @@ namespace PolyLab4 {
 			this->groupBox4->PerformLayout();
 			this->groupBox5->ResumeLayout(false);
 			this->groupBox5->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
