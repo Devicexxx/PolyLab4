@@ -19,6 +19,26 @@ void BaseFig::setP(float i)
 float BaseFig::GetS() { return S; }
 float BaseFig::GetP() { return P; }
 
+//void BaseFig::operator =(rectangle& k)
+//{
+//
+//}
+//void BaseFig::operator =(square& k)
+//{
+//
+//}
+//void BaseFig::operator =(triangle& k)
+//{
+//
+//}
+//void BaseFig::operator =(circle& k)
+//{
+//
+//}
+//void BaseFig::operator =(ellipse& k)
+//{
+//
+//}
 
 void BaseFig::operator *(float k)
 {

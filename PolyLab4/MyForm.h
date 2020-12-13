@@ -1,5 +1,9 @@
 #pragma once
 
+#include "figure.h"
+#include <stdlib.h>
+
+
 namespace PolyLab4 {
 
 	using namespace System;
@@ -8,10 +12,14 @@ namespace PolyLab4 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace std;
 
 	/// <summary>
 	/// Сводка для MyForm
 	/// </summary>
+	
+	BaseArr *a;
+
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
@@ -21,6 +29,8 @@ namespace PolyLab4 {
 			//
 			//TODO: добавьте код конструктора
 			//
+			a = new BaseArr();
+
 		}
 
 	protected:
@@ -120,13 +130,15 @@ namespace PolyLab4 {
 	private: System::Windows::Forms::TextBox^ textBox10;
 	private: System::Windows::Forms::Button^ buttonOut5;
 private: System::Windows::Forms::PictureBox^ pictureBox1;
-private: System::Windows::Forms::Button^ button1;
+
 private: System::Windows::Forms::TextBox^ textBox11;
 private: System::Windows::Forms::Label^ label23;
 private: System::Windows::Forms::Button^ buttonPrint;
 private: System::Windows::Forms::TextBox^ textBoxPrint;
 private: System::Windows::Forms::TextBox^ textBox12;
 private: System::Windows::Forms::Button^ button2;
+private: System::Windows::Forms::Button^ buttonSetsize;
+private: System::Windows::Forms::TextBox^ textBoxSetsize;
 
 	private:
 		/// <summary>
@@ -171,43 +183,44 @@ private: System::Windows::Forms::Button^ button2;
 			this->textBoxY1 = (gcnew System::Windows::Forms::TextBox());
 			this->textBoxX1 = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
-			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
-			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
-			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
 			this->buttonOut1 = (gcnew System::Windows::Forms::Button());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
 			this->buttonOut2 = (gcnew System::Windows::Forms::Button());
+			this->groupBox3 = (gcnew System::Windows::Forms::GroupBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->textBox5 = (gcnew System::Windows::Forms::TextBox());
 			this->label18 = (gcnew System::Windows::Forms::Label());
 			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
 			this->buttonOut3 = (gcnew System::Windows::Forms::Button());
+			this->groupBox4 = (gcnew System::Windows::Forms::GroupBox());
 			this->label19 = (gcnew System::Windows::Forms::Label());
 			this->textBox7 = (gcnew System::Windows::Forms::TextBox());
 			this->label20 = (gcnew System::Windows::Forms::Label());
 			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
 			this->buttonOut4 = (gcnew System::Windows::Forms::Button());
+			this->groupBox5 = (gcnew System::Windows::Forms::GroupBox());
 			this->label21 = (gcnew System::Windows::Forms::Label());
 			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
 			this->label22 = (gcnew System::Windows::Forms::Label());
 			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
 			this->buttonOut5 = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->textBox11 = (gcnew System::Windows::Forms::TextBox());
 			this->label23 = (gcnew System::Windows::Forms::Label());
 			this->buttonPrint = (gcnew System::Windows::Forms::Button());
 			this->textBoxPrint = (gcnew System::Windows::Forms::TextBox());
 			this->textBox12 = (gcnew System::Windows::Forms::TextBox());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->buttonSetsize = (gcnew System::Windows::Forms::Button());
+			this->textBoxSetsize = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -224,6 +237,7 @@ private: System::Windows::Forms::Button^ button2;
 			this->buttonEnterRect->TabIndex = 0;
 			this->buttonEnterRect->Text = L"Ввод";
 			this->buttonEnterRect->UseVisualStyleBackColor = true;
+			this->buttonEnterRect->Click += gcnew System::EventHandler(this, &MyForm::buttonEnterRect_Click);
 			// 
 			// textBoxLen
 			// 
@@ -472,85 +486,21 @@ private: System::Windows::Forms::Button^ button2;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Прямоугольник";
 			// 
-			// groupBox2
+			// label2
 			// 
-			this->groupBox2->Controls->Add(this->label3);
-			this->groupBox2->Controls->Add(this->label9);
-			this->groupBox2->Controls->Add(this->textBox3);
-			this->groupBox2->Controls->Add(this->buttonEnterSq);
-			this->groupBox2->Controls->Add(this->label4);
-			this->groupBox2->Controls->Add(this->textBoxSide);
-			this->groupBox2->Controls->Add(this->textBox4);
-			this->groupBox2->Controls->Add(this->buttonOut2);
-			this->groupBox2->Location = System::Drawing::Point(158, 67);
-			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Size = System::Drawing::Size(137, 288);
-			this->groupBox2->TabIndex = 43;
-			this->groupBox2->TabStop = false;
-			this->groupBox2->Text = L"Квадрат";
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(12, 235);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(14, 13);
+			this->label2->TabIndex = 27;
+			this->label2->Text = L"P";
 			// 
-			// groupBox3
+			// textBox2
 			// 
-			this->groupBox3->Controls->Add(this->label5);
-			this->groupBox3->Controls->Add(this->label8);
-			this->groupBox3->Controls->Add(this->textBox5);
-			this->groupBox3->Controls->Add(this->label10);
-			this->groupBox3->Controls->Add(this->label18);
-			this->groupBox3->Controls->Add(this->textBoxWeigh);
-			this->groupBox3->Controls->Add(this->textBox6);
-			this->groupBox3->Controls->Add(this->textBoxBott);
-			this->groupBox3->Controls->Add(this->buttonOut3);
-			this->groupBox3->Controls->Add(this->buttonEnterTri);
-			this->groupBox3->Location = System::Drawing::Point(301, 67);
-			this->groupBox3->Name = L"groupBox3";
-			this->groupBox3->Size = System::Drawing::Size(139, 288);
-			this->groupBox3->TabIndex = 44;
-			this->groupBox3->TabStop = false;
-			this->groupBox3->Text = L"Треугольник";
-			// 
-			// groupBox4
-			// 
-			this->groupBox4->Controls->Add(this->label19);
-			this->groupBox4->Controls->Add(this->label13);
-			this->groupBox4->Controls->Add(this->textBox7);
-			this->groupBox4->Controls->Add(this->textBoxRad);
-			this->groupBox4->Controls->Add(this->label20);
-			this->groupBox4->Controls->Add(this->label11);
-			this->groupBox4->Controls->Add(this->textBox8);
-			this->groupBox4->Controls->Add(this->label12);
-			this->groupBox4->Controls->Add(this->buttonOut4);
-			this->groupBox4->Controls->Add(this->textBoxY);
-			this->groupBox4->Controls->Add(this->textBoxX);
-			this->groupBox4->Controls->Add(this->buttonEnterCiar);
-			this->groupBox4->Location = System::Drawing::Point(446, 67);
-			this->groupBox4->Name = L"groupBox4";
-			this->groupBox4->Size = System::Drawing::Size(148, 288);
-			this->groupBox4->TabIndex = 45;
-			this->groupBox4->TabStop = false;
-			this->groupBox4->Text = L"Круг";
-			// 
-			// groupBox5
-			// 
-			this->groupBox5->Controls->Add(this->label21);
-			this->groupBox5->Controls->Add(this->label14);
-			this->groupBox5->Controls->Add(this->textBox9);
-			this->groupBox5->Controls->Add(this->label17);
-			this->groupBox5->Controls->Add(this->label22);
-			this->groupBox5->Controls->Add(this->textBoxY1);
-			this->groupBox5->Controls->Add(this->textBox10);
-			this->groupBox5->Controls->Add(this->textBoxX1);
-			this->groupBox5->Controls->Add(this->buttonOut5);
-			this->groupBox5->Controls->Add(this->label15);
-			this->groupBox5->Controls->Add(this->label16);
-			this->groupBox5->Controls->Add(this->textBoxb);
-			this->groupBox5->Controls->Add(this->textBoxa);
-			this->groupBox5->Controls->Add(this->buttonEnterElips);
-			this->groupBox5->Location = System::Drawing::Point(600, 67);
-			this->groupBox5->Name = L"groupBox5";
-			this->groupBox5->Size = System::Drawing::Size(153, 288);
-			this->groupBox5->TabIndex = 46;
-			this->groupBox5->TabStop = false;
-			this->groupBox5->Text = L"Элипс";
+			this->textBox2->Location = System::Drawing::Point(15, 251);
+			this->textBox2->Name = L"textBox2";
+			this->textBox2->Size = System::Drawing::Size(123, 20);
+			this->textBox2->TabIndex = 26;
 			// 
 			// label1
 			// 
@@ -577,21 +527,22 @@ private: System::Windows::Forms::Button^ button2;
 			this->buttonOut1->Text = L"Вывод";
 			this->buttonOut1->UseVisualStyleBackColor = true;
 			// 
-			// label2
+			// groupBox2
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(12, 235);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(14, 13);
-			this->label2->TabIndex = 27;
-			this->label2->Text = L"P";
-			// 
-			// textBox2
-			// 
-			this->textBox2->Location = System::Drawing::Point(15, 251);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(123, 20);
-			this->textBox2->TabIndex = 26;
+			this->groupBox2->Controls->Add(this->label3);
+			this->groupBox2->Controls->Add(this->label9);
+			this->groupBox2->Controls->Add(this->textBox3);
+			this->groupBox2->Controls->Add(this->buttonEnterSq);
+			this->groupBox2->Controls->Add(this->label4);
+			this->groupBox2->Controls->Add(this->textBoxSide);
+			this->groupBox2->Controls->Add(this->textBox4);
+			this->groupBox2->Controls->Add(this->buttonOut2);
+			this->groupBox2->Location = System::Drawing::Point(158, 67);
+			this->groupBox2->Name = L"groupBox2";
+			this->groupBox2->Size = System::Drawing::Size(137, 288);
+			this->groupBox2->TabIndex = 43;
+			this->groupBox2->TabStop = false;
+			this->groupBox2->Text = L"Квадрат";
 			// 
 			// label3
 			// 
@@ -634,6 +585,25 @@ private: System::Windows::Forms::Button^ button2;
 			this->buttonOut2->Text = L"Вывод";
 			this->buttonOut2->UseVisualStyleBackColor = true;
 			// 
+			// groupBox3
+			// 
+			this->groupBox3->Controls->Add(this->label5);
+			this->groupBox3->Controls->Add(this->label8);
+			this->groupBox3->Controls->Add(this->textBox5);
+			this->groupBox3->Controls->Add(this->label10);
+			this->groupBox3->Controls->Add(this->label18);
+			this->groupBox3->Controls->Add(this->textBoxWeigh);
+			this->groupBox3->Controls->Add(this->textBox6);
+			this->groupBox3->Controls->Add(this->textBoxBott);
+			this->groupBox3->Controls->Add(this->buttonOut3);
+			this->groupBox3->Controls->Add(this->buttonEnterTri);
+			this->groupBox3->Location = System::Drawing::Point(301, 67);
+			this->groupBox3->Name = L"groupBox3";
+			this->groupBox3->Size = System::Drawing::Size(139, 288);
+			this->groupBox3->TabIndex = 44;
+			this->groupBox3->TabStop = false;
+			this->groupBox3->Text = L"Треугольник";
+			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
@@ -675,6 +645,27 @@ private: System::Windows::Forms::Button^ button2;
 			this->buttonOut3->Text = L"Вывод";
 			this->buttonOut3->UseVisualStyleBackColor = true;
 			// 
+			// groupBox4
+			// 
+			this->groupBox4->Controls->Add(this->label19);
+			this->groupBox4->Controls->Add(this->label13);
+			this->groupBox4->Controls->Add(this->textBox7);
+			this->groupBox4->Controls->Add(this->textBoxRad);
+			this->groupBox4->Controls->Add(this->label20);
+			this->groupBox4->Controls->Add(this->label11);
+			this->groupBox4->Controls->Add(this->textBox8);
+			this->groupBox4->Controls->Add(this->label12);
+			this->groupBox4->Controls->Add(this->buttonOut4);
+			this->groupBox4->Controls->Add(this->textBoxY);
+			this->groupBox4->Controls->Add(this->textBoxX);
+			this->groupBox4->Controls->Add(this->buttonEnterCiar);
+			this->groupBox4->Location = System::Drawing::Point(446, 67);
+			this->groupBox4->Name = L"groupBox4";
+			this->groupBox4->Size = System::Drawing::Size(148, 288);
+			this->groupBox4->TabIndex = 45;
+			this->groupBox4->TabStop = false;
+			this->groupBox4->Text = L"Круг";
+			// 
 			// label19
 			// 
 			this->label19->AutoSize = true;
@@ -715,6 +706,29 @@ private: System::Windows::Forms::Button^ button2;
 			this->buttonOut4->TabIndex = 38;
 			this->buttonOut4->Text = L"Вывод";
 			this->buttonOut4->UseVisualStyleBackColor = true;
+			// 
+			// groupBox5
+			// 
+			this->groupBox5->Controls->Add(this->label21);
+			this->groupBox5->Controls->Add(this->label14);
+			this->groupBox5->Controls->Add(this->textBox9);
+			this->groupBox5->Controls->Add(this->label17);
+			this->groupBox5->Controls->Add(this->label22);
+			this->groupBox5->Controls->Add(this->textBoxY1);
+			this->groupBox5->Controls->Add(this->textBox10);
+			this->groupBox5->Controls->Add(this->textBoxX1);
+			this->groupBox5->Controls->Add(this->buttonOut5);
+			this->groupBox5->Controls->Add(this->label15);
+			this->groupBox5->Controls->Add(this->label16);
+			this->groupBox5->Controls->Add(this->textBoxb);
+			this->groupBox5->Controls->Add(this->textBoxa);
+			this->groupBox5->Controls->Add(this->buttonEnterElips);
+			this->groupBox5->Location = System::Drawing::Point(600, 67);
+			this->groupBox5->Name = L"groupBox5";
+			this->groupBox5->Size = System::Drawing::Size(153, 288);
+			this->groupBox5->TabIndex = 46;
+			this->groupBox5->TabStop = false;
+			this->groupBox5->Text = L"Элипс";
 			// 
 			// label21
 			// 
@@ -766,18 +780,9 @@ private: System::Windows::Forms::Button^ button2;
 			this->pictureBox1->TabIndex = 47;
 			this->pictureBox1->TabStop = false;
 			// 
-			// button1
-			// 
-			this->button1->Location = System::Drawing::Point(17, 39);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(143, 23);
-			this->button1->TabIndex = 28;
-			this->button1->Text = L"Ввод";
-			this->button1->UseVisualStyleBackColor = true;
-			// 
 			// textBox11
 			// 
-			this->textBox11->Location = System::Drawing::Point(166, 41);
+			this->textBox11->Location = System::Drawing::Point(630, 41);
 			this->textBox11->Name = L"textBox11";
 			this->textBox11->Size = System::Drawing::Size(123, 20);
 			this->textBox11->TabIndex = 33;
@@ -785,7 +790,7 @@ private: System::Windows::Forms::Button^ button2;
 			// label23
 			// 
 			this->label23->AutoSize = true;
-			this->label23->Location = System::Drawing::Point(17, 23);
+			this->label23->Location = System::Drawing::Point(612, 25);
 			this->label23->Name = L"label23";
 			this->label23->Size = System::Drawing::Size(149, 13);
 			this->label23->TabIndex = 33;
@@ -823,18 +828,36 @@ private: System::Windows::Forms::Button^ button2;
 			this->button2->Text = L"Поворот";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
+			// buttonSetsize
+			// 
+			this->buttonSetsize->Location = System::Drawing::Point(8, 39);
+			this->buttonSetsize->Name = L"buttonSetsize";
+			this->buttonSetsize->Size = System::Drawing::Size(144, 23);
+			this->buttonSetsize->TabIndex = 33;
+			this->buttonSetsize->Text = L"Задать размер массива";
+			this->buttonSetsize->UseVisualStyleBackColor = true;
+			this->buttonSetsize->Click += gcnew System::EventHandler(this, &MyForm::buttonSetsize_Click);
+			// 
+			// textBoxSetsize
+			// 
+			this->textBoxSetsize->Location = System::Drawing::Point(158, 42);
+			this->textBoxSetsize->Name = L"textBoxSetsize";
+			this->textBoxSetsize->Size = System::Drawing::Size(123, 20);
+			this->textBoxSetsize->TabIndex = 33;
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1219, 639);
+			this->Controls->Add(this->textBoxSetsize);
+			this->Controls->Add(this->buttonSetsize);
 			this->Controls->Add(this->textBox12);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->textBoxPrint);
 			this->Controls->Add(this->buttonPrint);
 			this->Controls->Add(this->label23);
 			this->Controls->Add(this->textBox11);
-			this->Controls->Add(this->button1);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->groupBox5);
 			this->Controls->Add(this->groupBox4);
@@ -862,5 +885,23 @@ private: System::Windows::Forms::Button^ button2;
 #pragma endregion
 	private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void buttonSetsize_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (textBoxSetsize->Text->Length < 1)
+		return;
+	int g = Convert::ToInt32(textBoxSetsize->Text);
+	a->setSize(g);
+
+}
+private: System::Void buttonEnterRect_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (textBox11->Text->Length < 1)
+		return;
+	unsigned int i = Convert::ToInt32(textBox11->Text);
+	rectangle *k = new rectangle();
+	k->setLen(Convert::ToInt32(textBoxLen->Text));
+	k->setHei(Convert::ToInt32(textBoxHei->Text));
+	(*a)[i] = k;
+}
 };
 }

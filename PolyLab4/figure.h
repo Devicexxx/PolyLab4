@@ -15,6 +15,11 @@ public:
     float GetS();
     float GetP();
 
+    /*void operator =(rectangle& k);
+    void operator =(square& k);
+    void operator =(triangle& k);
+    void operator =(circle& k);
+    void operator =(ellipse& k);*/
 
     void operator *(float k);
     void operator *(BaseFig& k);
