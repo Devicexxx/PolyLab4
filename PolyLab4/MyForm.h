@@ -2,7 +2,7 @@
 
 #include "figure.h"
 #include <stdlib.h>
-
+//#include"graphics.h"
 
 namespace PolyLab4 {
 
@@ -902,7 +902,8 @@ private: System::Void buttonEnterRect_Click(System::Object^ sender, System::Even
 	int j = 1;
 	rectangle *k = new rectangle();
 	a->settype(i, j);
-	a->setLen(Convert::ToInt32(textBoxLen->Text));
+	a->SET(i, j);
+	(*a)[i].getLen();
 	k->setHei(Convert::ToInt32(textBoxHei->Text));
 }
 private: System::Void buttonEnterSq_Click(System::Object^ sender, System::EventArgs^ e) 
