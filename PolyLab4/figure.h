@@ -15,12 +15,6 @@ public:
     float GetS();
     float GetP();
 
-    /*void operator =(rectangle& k);
-    void operator =(square& k);
-    void operator =(triangle& k);
-    void operator =(circle& k);
-    void operator =(ellipse& k);*/
-
     void operator *(float k);
     void operator *(BaseFig& k);
     void operator /(float k);
@@ -28,19 +22,25 @@ public:
     bool operator >(BaseFig& k);
     bool operator <(BaseFig& k);
     bool operator ==(BaseFig& k);
+
 };
+
+
+//template< class T >
+//void newmem(T* type, unsigned int numItems);
+
 
 public class BaseArr
 {
 private:
-    BaseFig* arr; // ?
+    BaseFig** arr; // ?
     unsigned int Len; //размер масива
 public:
     BaseArr() { Len = 0; arr = 0; }
     BaseArr(unsigned int l)
     {
         Len = l;
-        arr = new BaseFig[l];
+        arr = new BaseFig*[l];
     }
     ~BaseArr() {};
     BaseArr(const BaseArr& TArr);// Конструкор копий
@@ -51,6 +51,8 @@ public:
     unsigned int getSize();
     //BaseFig operator [] (System::String^ s);
     //void  operator = (BaseArr& k);
+
+    void settype(unsigned int i, unsigned int type);
 };
 
 

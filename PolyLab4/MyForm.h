@@ -268,6 +268,7 @@ private: System::Windows::Forms::TextBox^ textBoxSetsize;
 			this->buttonEnterSq->TabIndex = 17;
 			this->buttonEnterSq->Text = L"¬вод";
 			this->buttonEnterSq->UseVisualStyleBackColor = true;
+			this->buttonEnterSq->Click += gcnew System::EventHandler(this, &MyForm::buttonEnterSq_Click);
 			// 
 			// buttonEnterTri
 			// 
@@ -898,10 +899,22 @@ private: System::Void buttonEnterRect_Click(System::Object^ sender, System::Even
 	if (textBox11->Text->Length < 1)
 		return;
 	unsigned int i = Convert::ToInt32(textBox11->Text);
+	int j = 1;
 	rectangle *k = new rectangle();
+	a->settype(i, j);
+	a->setLen(Convert::ToInt32(textBoxLen->Text));
+	k->setHei(Convert::ToInt32(textBoxHei->Text));
+}
+private: System::Void buttonEnterSq_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (textBox11->Text->Length < 1)
+		return;
+	unsigned int i = Convert::ToInt32(textBox11->Text);
+	int j = 2;
+	square* k = new square();
 	k->setLen(Convert::ToInt32(textBoxLen->Text));
 	k->setHei(Convert::ToInt32(textBoxHei->Text));
-	(*a)[i] = k;
+	a->settype(i, j);
 }
 };
 }

@@ -19,26 +19,6 @@ void BaseFig::setP(float i)
 float BaseFig::GetS() { return S; }
 float BaseFig::GetP() { return P; }
 
-//void BaseFig::operator =(rectangle& k)
-//{
-//
-//}
-//void BaseFig::operator =(square& k)
-//{
-//
-//}
-//void BaseFig::operator =(triangle& k)
-//{
-//
-//}
-//void BaseFig::operator =(circle& k)
-//{
-//
-//}
-//void BaseFig::operator =(ellipse& k)
-//{
-//
-//}
 
 void BaseFig::operator *(float k)
 {
@@ -83,18 +63,49 @@ bool BaseFig::operator ==(BaseFig& k)
     return false;
 }
 
+
+void BaseArr::settype(unsigned int i, unsigned int type)
+{
+    if (type >= 5) throw 11; // неверный тип
+    if (i < Len)
+    {
+        if (arr[i] != NULL) 
+            delete arr[i]; // Если уже создавалась фигура - удаляем
+        switch (type) // В зависимости от типа создаем фигуры:
+        {
+        case 1:
+            arr[i] = new rectangle; // прямоугольник
+            break;
+        case 2:
+            arr[i] = new square; // квадрат
+            break;
+        case 3:
+            arr[i] = new triangle; // треугольник
+            break;
+        case 4:
+            arr[i] = new ellipse; // эллипс
+            break;
+        case 5:
+            arr[i] = new circle; // круг
+            break;
+        }
+    }
+
+}
+
+
 //класс массив
 
 BaseFig BaseArr:: operator [](unsigned int i)
 {
     if (i < Len)
-        return arr[i];
-    return arr[0];
+        return *arr[i];
+    return *arr[0];
 }
 BaseArr::BaseArr(const BaseArr& TArr) // Конструкор копий
 {
     Len = TArr.Len; // Устанавливаем размер
-    arr = new BaseFig[Len]; // Выделяем память
+    *arr = new BaseFig[Len]; // Выделяем память
     for (unsigned int i = 0; i < Len; i++)
         arr[i] = TArr.arr[i]; // Копируем элементы
 }
@@ -105,18 +116,19 @@ void BaseArr::setSize(unsigned int i)
     if (arr) // Если память выделялась ранее,
     {
         for (unsigned int k = 0; k < i && k < Len; k++)
-            tmp[k] = arr[k]; // Копируем элементы
+            tmp[k] = *arr[k]; // Копируем элементы
         delete[] arr; // освобождаем память
     }
-    arr = new BaseFig[Len]; // и выделяем память
+    *arr = new BaseFig[Len]; // и выделяем память
     for (unsigned int k = 0; k < Len && k < i; k++)
-        arr[k] = tmp[k];
+        *arr[k] = tmp[k];
     Len = i; // Устанавливаем новый размер
 }
 unsigned int BaseArr::getSize()
 {
     return Len;
 }
+
 
 //прямоугольник
 
