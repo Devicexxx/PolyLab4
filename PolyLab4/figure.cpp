@@ -8,23 +8,46 @@ using namespace System;
 //Base
 void BaseFig::setS(float i)
 {
-    if (i <= 0)
+    if (i >= 0)
         S = i;
 }
 void BaseFig::setP(float i)
 {
-    if (i <= 0)
+    if (i >= 0)
         P = i;
 }
+void BaseFig::setWidth(int i)
+{
+    if (i >= 0)
+        Width = i;
+}
+void BaseFig::setHeight(int i)
+{
+    if (i >= 0)
+        Height = i;
+}
+
 float BaseFig::GetS() { return S; }
 float BaseFig::GetP() { return P; }
+int BaseFig::GetWidth() { return Width; }
+int BaseFig::GetHeight() { return Height; }
+int BaseFig::GetType() { return type1; };
 
 
-void BaseFig::operator *(float k)
+int rectangle::GetType() { return type1; };
+int square::GetType() { return type1; };
+int triangle::GetType() { return type1; };
+int circle::GetType() { return type1; };
+int ellipse::GetType() { return type1; };
+
+
+BaseFig BaseFig::operator *=(int k)
 {
     if (k < 0)
-        return;
-    this->setS(this->GetS() * k);
+        throw 11;
+    this->setHeight(this->GetHeight() * k);
+    this->setWidth(this->GetWidth() * k);
+    return *this;
 }
 void BaseFig::operator *(BaseFig& k)
 {
@@ -32,11 +55,13 @@ void BaseFig::operator *(BaseFig& k)
         return;
     this->setS(this->GetS() * k.GetS());
 }
-void BaseFig::operator /(float k)
+BaseFig BaseFig::operator /=(float k)
 {
     if (k < 0)
-        return;
-    this->setS(Convert::ToInt32((*this).GetS()) / k);
+        throw 11;
+    this->setHeight(this->GetHeight() / k);
+    this->setWidth(this->GetWidth() / k);
+    return *this;
 }
 void BaseFig::operator /(BaseFig& k)
 {
@@ -69,8 +94,8 @@ void BaseArr::settype(unsigned int i, unsigned int type)
     if (type >= 5) throw 11; // неверный тип
     if (i < Len)
     {
-        if (arr[i] != NULL) 
-            delete arr[i]; // Если уже создавалась фигура - удаляем
+        //if (arr[i] != 0) 
+        //    delete arr[i]; // Если уже создавалась фигура - удаляем
         switch (type) // В зависимости от типа создаем фигуры:
         {
         case 1:
@@ -83,16 +108,146 @@ void BaseArr::settype(unsigned int i, unsigned int type)
             arr[i] = new triangle; // треугольник
             break;
         case 4:
-            arr[i] = new ellipse; // эллипс
+            arr[i] = new circle; // круг
             break;
         case 5:
-            arr[i] = new circle; // круг
+            arr[i] = new ellipse; // элипс
             break;
         }
     }
 
 }
+void BaseArr::SET(unsigned int i, unsigned int type, unsigned int w, unsigned int h)
+{
+    if (type >= 5) throw 11; // неверный тип
+    if (i < Len)
+    {
+        switch (type) // В зависимости от типа создаем фигуры:
+        {
+        case 1:
+            arr[i]->setWidth(w); // прямоугольник
+            arr[i]->setHeight(h);
+            break;
+        case 2:
+            arr[i]->setHeight(h); // квадрат
+            break;
+        case 3:
+            arr[i]->setWidth(w); // треугольник
+            arr[i]->setHeight(h);
+            break;
+        case 4:
+            arr[i]->setWidth(w); // круг
+            break;
+        case 5:
+            arr[i]->setWidth(w); // элипс
+            arr[i]->setHeight(h);
+            break;
+        }
+    }
+}
+String^ BaseArr::ret(unsigned int i)
+{
+    if (i < Len)
+    {
+        String^ s = Convert::ToString(arr[i]->GetS()) + "/" + Convert::ToString(arr[i]->GetP());
+        return s;
+    }
+}
 
+void BaseArr::Change(unsigned int i, unsigned int type, unsigned int k)
+{
+    if (i < Len)
+    {
+        switch (type) // В зависимости от типа создаем фигуры:
+        {
+        case 1:
+            (*arr)[i] *= k;
+            break;
+        case 2:
+            (*arr)[i] /= k;
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            break;
+        }
+    }
+}
+
+bool BaseArr::comparison(unsigned int i, unsigned int j, unsigned int type)
+{
+    if (i < Len)
+    {
+        switch (type) // В зависимости от типа создаем фигуры:
+        {
+        case 1:
+            return(arr[i] > arr[j]);
+        case 2:
+            return(arr[i] < arr[j]);
+        case 3:
+            return(arr[i] == arr[j]);
+        }
+    }
+}
+
+int BaseArr::type(unsigned int i)
+{
+    return (arr[i]->GetType());
+}
+
+int BaseArr::Paint(unsigned int i, unsigned int x, unsigned int y)
+{
+    if (i < Len)
+    {
+        int m_p[8];
+        int h = arr[i]->GetType();
+        switch (h) // В зависимости от типа создаем фигуры:
+        {
+        case 1:
+            m_p[0] = x;
+            m_p[1] = y;
+            m_p[2] = x + arr[i]->GetWidth();
+            m_p[3] = y;
+            m_p[4] = x;
+            m_p[5] = y + +arr[i]->GetHeight();
+            m_p[6] = x + arr[i]->GetWidth();
+            m_p[7] = y + +arr[i]->GetHeight();
+            return m_p[8];
+        case 2:
+            m_p[0] = x;
+            m_p[1] = y;
+            m_p[2] = x + arr[i]->GetHeight();
+            m_p[3] = y;
+            m_p[4] = x;
+            m_p[5] = y + +arr[i]->GetHeight();
+            m_p[6] = x + arr[i]->GetHeight();
+            m_p[7] = y + +arr[i]->GetHeight();
+            break;
+        case 3:
+            m_p[0] = x;
+            m_p[1] = y;
+            m_p[2] = x + arr[i]->GetWidth();
+            m_p[3] = y + arr[i]->GetHeight();
+            m_p[4] = x - arr[i]->GetWidth();
+            m_p[5] = y - arr[i]->GetHeight();
+            break;
+        case 4:
+            m_p[0] = x;
+            m_p[1] = y;
+            m_p[2] = x + arr[i]->GetWidth();
+            m_p[3] = y + arr[i]->GetWidth();
+            break;
+        case 5:
+            m_p[0] = x;
+            m_p[1] = y;
+            m_p[2] = x + arr[i]->GetWidth();
+            m_p[3] = y + arr[i]->GetHeight();
+            break;
+        }
+    }
+}
 
 //класс массив
 
@@ -119,7 +274,7 @@ void BaseArr::setSize(unsigned int i)
             tmp[k] = *arr[k]; // Копируем элементы
         delete[] arr; // освобождаем память
     }
-    *arr = new BaseFig[Len]; // и выделяем память
+    arr = new BaseFig*[Len]; // и выделяем память
     for (unsigned int k = 0; k < Len && k < i; k++)
         *arr[k] = tmp[k];
     Len = i; // Устанавливаем новый размер
@@ -132,20 +287,16 @@ unsigned int BaseArr::getSize()
 
 //прямоугольник
 
-void rectangle::setLen(float i)
-{
-    if (i <= 0)
-        Len = i;
+float rectangle::GetS()
+{  
+    S = Height * Width;
+    return S;
 }
-void rectangle::setHei(float i)
+float rectangle::GetP()
 {
-    if (i <= 0)
-        Hei = i;
+    P = 2 * (Height + Width);
+    return P;
 }
-float rectangle::GetLen() { return (Len); }
-float rectangle::GetHei() { return (Hei); }
-float rectangle::GetS() { return (Hei * Len); }
-float rectangle::GetP() { return (2 * (Hei + Len)); }
 
 
 //void operator *(rectangle& k);
@@ -184,55 +335,60 @@ float rectangle::GetP() { return (2 * (Hei + Len)); }
 
 //квадрат
 
-float square::GetS() { return (Len * Len); }
-float square::GetP() { return (4 * Len); }
-
+float square::GetS()
+{
+    S = Height * Height;
+    return S;
+}
+float square::GetP()
+{
+    P = 4 * Height;
+    return P;
+}
 
 
 //треугольник
 
+float triangle::GetS()
+{
+    S = Height * Width / 2;
+    return S;
+}
+float triangle::GetP()
+{
+    P = Width + 2 * sqrt(Height * Height + (Width / 2) * (Width / 2));
+    return P;
+}
 
-void triangle::setbottom(float i)
-{
-    if (i <= 0)
-        bottom = i;
-}
-void triangle::sethei(float i)
-{
-    if (i <= 0)
-        hei = i;
-}
-float triangle::Getbottom() { return (bottom); }
-float triangle::Gethei() { return (hei); }
-float triangle::GetS() { return (bottom * hei / 2); }
-//String^ triangle::GetP() { return Convert::ToString(bottom * hei / 2); }
 
 
 //круг
 
-void circle::setrad(float i) { rad = i; }
-void circle::setx(float i) { x = i; }
-void circle::sety(float i) { y = i; }
-float circle::Getrad() { return (rad); }
-float circle::Getx() { return (x); }
-float circle::Gety() { return (y); }
-float circle::GetS() { return (3, 14 * rad * rad); }
-float circle::GetP() { return (2 * 3.14 * rad); }
+float circle::GetS()
+{
+    S = 3.14 * Width * Width;
+    return S;
+}
+float circle::GetP()
+{
+    P = 2 * 3.14 * Width;
+    return P;
+}
 
 
 //элипс
 
 
-void ellipse::seta(float i) { a = i; }
-void ellipse::setb(float i) { b = i; }
-void ellipse::setx(float i) { x = i; }
-void ellipse::sety(float i) { y = i; }
-float ellipse::Geta() { return (a); }
-float ellipse::Getb() { return (b); }
-float ellipse::Getx() { return (x); }
-float ellipse::Gety() { return (y); }
-float ellipse::GetS() { return (3.14 * a * b); }
-float ellipse::GetP() { return (2*3.14*sqrt((a*a+b*b)/2)); }
+float ellipse::GetS()
+{
+    S = 3.14 * Width * Height;
+    return S;
+}
+float ellipse::GetP()
+{
+    P = 2 * 3.14 * sqrt((Width * Width + Height * Height) / 2);
+    return P;
+}
 
 
 

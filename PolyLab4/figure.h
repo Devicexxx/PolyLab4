@@ -4,25 +4,34 @@ using namespace System;
 
 class BaseFig
 {
-private:
-
 protected:
-	float S, P;  // S-площадь P-периметр
+	float S, P;// S-площадь P-периметр
+    int Width, Height, type1;
 public:
-	BaseFig() { S = 0; P = 0; }
+    BaseFig() { S = 0; P = 0; type1 = 0; }
+
     void setS(float i);
     void setP(float i);
-    float GetS();
-    float GetP();
+    void setWidth(int i);
+    void setHeight(int i);
 
-    void operator *(float k);
+
+    virtual float GetS();
+    virtual float GetP();
+    virtual int GetType();
+    int GetWidth();
+    int GetHeight();
+
+    BaseFig operator *=(int k);
     void operator *(BaseFig& k);
-    void operator /(float k);
+    BaseFig operator /=(float k);
     void operator /(BaseFig& k);
     bool operator >(BaseFig& k);
     bool operator <(BaseFig& k);
     bool operator ==(BaseFig& k);
 
+
+    friend class BaseArr;
 };
 
 
@@ -53,6 +62,14 @@ public:
     //void  operator = (BaseArr& k);
 
     void settype(unsigned int i, unsigned int type);
+    void SET(unsigned int i, unsigned int type, unsigned int w, unsigned int h);
+    String^ ret(unsigned int i);
+    void Change(unsigned int i, unsigned int type, unsigned int k);
+    bool comparison(unsigned int i, unsigned int j, unsigned int type);
+    int Paint(unsigned int i, unsigned int x, unsigned int y);
+    int type(unsigned int i);
+
+    friend class Basefig;
 };
 
 
@@ -60,24 +77,23 @@ public:
 class rectangle : public BaseFig // прямоугольник
 {
 protected:
-    float Len, Hei;  // 
+    
 public:
-    rectangle() { Len = 0; Hei = 0; S = 0; P = 0; }
-    void setLen(float i);
-    void setHei(float i);
-    float GetLen();
-    float GetHei();
+    rectangle() { Height = 0; Width = 0; S = 0; P = 0; type1 = 1;}
+
     float GetS();
     float GetP();
-
+    int GetType();
 };
 
 class square : public rectangle //квадрат
 {
 public:
-    square() { Len = 0; S = 0; P = 0; }
+    square() { Height = 0; S = 0; P = 0; type1 = 2;}
+  
     float GetS();
     float GetP();
+    int GetType();
 };
 
 class triangle : public BaseFig // треуголник
@@ -85,50 +101,36 @@ class triangle : public BaseFig // треуголник
 protected:
     float bottom, hei;  // 
 public:
-    triangle() { bottom = 0; hei = 0; S = 0; P = 0; }
-    void setbottom(float i);
-    void sethei(float i);
-    float Getbottom();
-    float Gethei();
+    triangle() { Height = 0; Width = 0; S = 0; P = 0; type1 = 3; }
+ 
     float GetS();
-    //float GetP();
-
+    float GetP();
+    int GetType();
 };
 
 class circle : public BaseFig // круг
 {
 protected:
-    float rad, x, y;  // 
+
 public:
-    circle() { rad = 0; x = 0; y = 0; }
-    void setrad(float i);
-    void setx(float i);
-    void sety(float i);
-    float Getrad();
-    float Getx();
-    float Gety();
+    circle() { Width = 0; S = 0; P = 0; type1 = 4; }
+  
     float GetS();
     float GetP();
-
+    int GetType();
 };
 
 
 class ellipse : public circle // элипс
 {
-protected:  //
-    float a, b;
+protected:
+
 public:
-    ellipse() { a = 0; b = 0; x = 0; y = 0; }
-    void seta(float i);
-    void setb(float i);
-    void setx(float i);
-    void sety(float i);
-    float Geta();
-    float Getb();
-    float Getx();
-    float Gety();
+    ellipse() { Height = 0; Width = 0; type1 = 5; }
+
     float GetS();
     float GetP();
+    int GetType();
 };
 
 
