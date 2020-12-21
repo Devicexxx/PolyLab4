@@ -66,10 +66,28 @@ public:
     String^ ret(unsigned int i);
     void Change(unsigned int i, unsigned int type, unsigned int k);
     bool comparison(unsigned int i, unsigned int j, unsigned int type);
-    int Paint(unsigned int i, unsigned int x, unsigned int y);
+    intarr& Paint(unsigned int i, unsigned int x, unsigned int y);
     int type(unsigned int i);
 
     friend class Basefig;
+    friend class intarr;
+};
+
+public class intarr
+{
+private:
+    int* arr;
+    int Len;
+public:
+    intarr() { arr = 0; Len = 0; }
+    intarr(unsigned int i)
+    {
+        Len = i;
+        arr = new int[Len];
+    }
+    void setDot(unsigned int i);
+    int getDot(unsigned int i);
+    intarr operator [] (unsigned int i);
 };
 
 

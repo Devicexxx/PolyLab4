@@ -864,7 +864,7 @@ private: System::Void buttonPrint_Click(System::Object^ sender, System::EventArg
 }
 private: System::Void pictureBox1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
 {
-	int l = a->type(Convert::ToInt32(textBoxPrint->Text));
+	/*int l = a->type(Convert::ToInt32(textBoxPrint->Text));
 	switch(l)
 	{ 
 	case 1:
@@ -894,10 +894,12 @@ private: System::Void pictureBox1_Paint(System::Object^ sender, System::Windows:
 	{
 		e->Graphics->DrawEllipse(System::Drawing::Pens::Green, m_p[0], m_p[1], m_p[2], m_p[3]);
 	}
-	}
-	e->Graphics->DrawLine(System::Drawing::Pens::Green, m_p[1], m_p[2], m_p[3], m_p[4]);
-	e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[5], m_p[6], m_p[7], m_p[8]);
-	e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[9], m_p[10], m_p[11], m_p[12]);
+	}*/
+	e->Graphics->DrawLine(System::Drawing::Pens::Green, m_p[0], m_p[1], m_p[2], m_p[3]);
+	e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[0], m_p[1], m_p[4], m_p[5]);
+	e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[6], m_p[7], m_p[2], m_p[3]);
+	e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[6], m_p[7], m_p[4], m_p[5]);
+
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
 {

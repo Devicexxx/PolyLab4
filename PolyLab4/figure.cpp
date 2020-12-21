@@ -197,59 +197,77 @@ int BaseArr::type(unsigned int i)
     return (arr[i]->GetType());
 }
 
-int BaseArr::Paint(unsigned int i, unsigned int x, unsigned int y)
+intarr& BaseArr::Paint(unsigned int i, unsigned int x, unsigned int y)
 {
     if (i < Len)
     {
-        int m_p[8];
+        intarr* m_p;
+        m_p = new intarr[8];
         int h = arr[i]->GetType();
         switch (h) // ¬ зависимости от типа создаем фигуры:
         {
         case 1:
-            m_p[0] = x;
-            m_p[1] = y;
-            m_p[2] = x + arr[i]->GetWidth();
-            m_p[3] = y;
-            m_p[4] = x;
-            m_p[5] = y + +arr[i]->GetHeight();
-            m_p[6] = x + arr[i]->GetWidth();
-            m_p[7] = y + +arr[i]->GetHeight();
-            return m_p[8];
+            (*m_p)[0].setDot(x);
+            (*m_p)[1].setDot(y);
+            (*m_p)[2].setDot(x + arr[i]->GetWidth());
+            (*m_p)[3].setDot(y);
+            (*m_p)[4].setDot(x);
+            (*m_p)[5].setDot(y + +arr[i]->GetHeight());
+            (*m_p)[6].getDot(x + arr[i]->GetWidth());
+            (*m_p)[7].setDot(y + +arr[i]->GetHeight());
+            return m_p;
         case 2:
-            m_p[0] = x;
-            m_p[1] = y;
-            m_p[2] = x + arr[i]->GetHeight();
-            m_p[3] = y;
-            m_p[4] = x;
-            m_p[5] = y + +arr[i]->GetHeight();
-            m_p[6] = x + arr[i]->GetHeight();
-            m_p[7] = y + +arr[i]->GetHeight();
-            break;
+            (*m_p)[0].setDot(x);
+            (*m_p)[1].setDot(y);
+            (*m_p)[2].setDot(x + arr[i]->GetHeight());
+            (*m_p)[3].setDot(y);
+            (*m_p)[4].setDot(x);
+            (*m_p)[5].setDot(y + +arr[i]->GetHeight());
+            (*m_p)[6].setDot(x + arr[i]->GetHeight());
+            (*m_p)[7].setDot(y + +arr[i]->GetHeight());
+            return m_p;
         case 3:
-            m_p[0] = x;
-            m_p[1] = y;
-            m_p[2] = x + arr[i]->GetWidth();
-            m_p[3] = y + arr[i]->GetHeight();
-            m_p[4] = x - arr[i]->GetWidth();
-            m_p[5] = y - arr[i]->GetHeight();
-            break;
+            (*m_p)[0].setDot(x);
+            (*m_p)[1].setDot(y);
+            (*m_p)[2].setDot(x + arr[i]->GetWidth());
+            (*m_p)[3].setDot(y + arr[i]->GetHeight());
+            (*m_p)[4].setDot(x - arr[i]->GetWidth());
+            (*m_p)[5].setDot(y - arr[i]->GetHeight());
+            return m_p;
         case 4:
-            m_p[0] = x;
-            m_p[1] = y;
-            m_p[2] = x + arr[i]->GetWidth();
-            m_p[3] = y + arr[i]->GetWidth();
-            break;
+            (*m_p)[0].setDot(x);
+            (*m_p)[1].setDot(y);
+            (*m_p)[2].setDot(x + arr[i]->GetWidth());
+            (*m_p)[3].setDot(y + arr[i]->GetWidth());
+            return *m_p;
         case 5:
-            m_p[0] = x;
-            m_p[1] = y;
-            m_p[2] = x + arr[i]->GetWidth();
-            m_p[3] = y + arr[i]->GetHeight();
-            break;
+            (*m_p)[0].setDot(x);
+            (*m_p)[1].setDot(y);
+            (*m_p)[2].setDot(x + arr[i]->GetWidth());
+            (*m_p)[3].setDot(y + arr[i]->GetHeight());
+            return *m_p;
         }
     }
 }
 
 //класс массив
+intarr intarr::operator [] (unsigned int i)
+{
+    if (i < Len)
+        return arr[i];
+    return arr[0];
+}
+void intarr::setDot(unsigned int i)
+{
+    *this = i;
+}
+int intarr::getDot(unsigned int i)
+{
+    return (arr[i]);
+}
+
+
+
 
 BaseFig BaseArr:: operator [](unsigned int i)
 {
