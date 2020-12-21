@@ -91,7 +91,7 @@ bool BaseFig::operator ==(BaseFig& k)
 
 void BaseArr::settype(unsigned int i, unsigned int type)
 {
-    if (type >= 5) throw 11; // неверный тип
+    if (type > 5) throw 11; // неверный тип
     if (i < Len)
     {
         //if (arr[i] != 0) 
@@ -119,7 +119,7 @@ void BaseArr::settype(unsigned int i, unsigned int type)
 }
 void BaseArr::SET(unsigned int i, unsigned int type, unsigned int w, unsigned int h)
 {
-    if (type >= 5) throw 11; // неверный тип
+    if (type > 5) throw 11; // неверный тип
     if (i < Len)
     {
         switch (type) // В зависимости от типа создаем фигуры:
@@ -154,6 +154,15 @@ String^ BaseArr::ret(unsigned int i)
     }
 }
 
+void BaseArr::clear()
+{
+    for (int i = 0; i < Len; i++)
+    {
+        delete arr[i];
+        arr[i] = new BaseFig;
+    }
+}
+
 void BaseArr::Change(unsigned int i, unsigned int type, unsigned int k)
 {
     if (i < Len)
@@ -167,7 +176,30 @@ void BaseArr::Change(unsigned int i, unsigned int type, unsigned int k)
             (*arr)[i] /= k;
             break;
         case 3:
+        {
+            delete arr[k];
+            int l = arr[i]->GetType();
+            switch (l) // В зависимости от типа создаем фигуры:
+            {
+            case 1:
+                arr[k] = new rectangle; // прямоугольник
+                break;
+            case 2:
+                arr[k] = new square; // квадрат
+                break;
+            case 3:
+                arr[k] = new triangle; // треугольник
+                break;
+            case 4:
+                arr[k] = new circle; // круг
+                break;
+            case 5:
+                arr[k] = new ellipse; // элипс
+                break;
+            }
+            arr[k] = arr[i];
             break;
+        }
         case 4:
             break;
         case 5:
@@ -176,11 +208,30 @@ void BaseArr::Change(unsigned int i, unsigned int type, unsigned int k)
     }
 }
 
+void BaseArr::sort()
+{
+    BaseFig* tmp;
+    tmp = new BaseFig;
+    for (int i = 0; i < Len - 1; i++)
+    {
+        for (int j = 0; j < Len - i - 1; j++)
+        {
+            if (arr[j]->GetS() > arr[j + 1]->GetS())
+            {
+                tmp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tmp;
+            }
+        }
+    }
+}
+
+
 bool BaseArr::comparison(unsigned int i, unsigned int j, unsigned int type)
 {
     if (i < Len)
     {
-        switch (type) // В зависимости от типа создаем фигуры:
+        switch (type)
         {
         case 1:
             return(arr[i] > arr[j]);
@@ -197,76 +248,8 @@ int BaseArr::type(unsigned int i)
     return (arr[i]->GetType());
 }
 
-intarr& BaseArr::Paint(unsigned int i, unsigned int x, unsigned int y)
-{
-    if (i < Len)
-    {
-        intarr* m_p;
-        m_p = new intarr[8];
-        int h = arr[i]->GetType();
-        switch (h) // В зависимости от типа создаем фигуры:
-        {
-        case 1:
-            (*m_p)[0].setDot(x);
-            (*m_p)[1].setDot(y);
-            (*m_p)[2].setDot(x + arr[i]->GetWidth());
-            (*m_p)[3].setDot(y);
-            (*m_p)[4].setDot(x);
-            (*m_p)[5].setDot(y + +arr[i]->GetHeight());
-            (*m_p)[6].getDot(x + arr[i]->GetWidth());
-            (*m_p)[7].setDot(y + +arr[i]->GetHeight());
-            return m_p;
-        case 2:
-            (*m_p)[0].setDot(x);
-            (*m_p)[1].setDot(y);
-            (*m_p)[2].setDot(x + arr[i]->GetHeight());
-            (*m_p)[3].setDot(y);
-            (*m_p)[4].setDot(x);
-            (*m_p)[5].setDot(y + +arr[i]->GetHeight());
-            (*m_p)[6].setDot(x + arr[i]->GetHeight());
-            (*m_p)[7].setDot(y + +arr[i]->GetHeight());
-            return m_p;
-        case 3:
-            (*m_p)[0].setDot(x);
-            (*m_p)[1].setDot(y);
-            (*m_p)[2].setDot(x + arr[i]->GetWidth());
-            (*m_p)[3].setDot(y + arr[i]->GetHeight());
-            (*m_p)[4].setDot(x - arr[i]->GetWidth());
-            (*m_p)[5].setDot(y - arr[i]->GetHeight());
-            return m_p;
-        case 4:
-            (*m_p)[0].setDot(x);
-            (*m_p)[1].setDot(y);
-            (*m_p)[2].setDot(x + arr[i]->GetWidth());
-            (*m_p)[3].setDot(y + arr[i]->GetWidth());
-            return *m_p;
-        case 5:
-            (*m_p)[0].setDot(x);
-            (*m_p)[1].setDot(y);
-            (*m_p)[2].setDot(x + arr[i]->GetWidth());
-            (*m_p)[3].setDot(y + arr[i]->GetHeight());
-            return *m_p;
-        }
-    }
-}
 
 //класс массив
-intarr intarr::operator [] (unsigned int i)
-{
-    if (i < Len)
-        return arr[i];
-    return arr[0];
-}
-void intarr::setDot(unsigned int i)
-{
-    *this = i;
-}
-int intarr::getDot(unsigned int i)
-{
-    return (arr[i]);
-}
-
-
 
 
 BaseFig BaseArr:: operator [](unsigned int i)
@@ -297,6 +280,53 @@ void BaseArr::setSize(unsigned int i)
         *arr[k] = tmp[k];
     Len = i; // Устанавливаем новый размер
 }
+void BaseArr::setSizerand(unsigned int i)
+{
+    for (int k = 0; k < i; k++)
+    {
+        int r1 = rand() % 10;
+        int r2 = rand() % 10;
+        int type = rand() % 5;
+        switch (type)
+        {
+        case 0:
+        {
+            arr[k] = new rectangle;
+            arr[k]->setHeight(r1);
+            arr[k]->setWidth(r2);
+            break;
+        }
+        case 1:
+        {
+            arr[k] = new square; // квадрат
+            arr[k]->setHeight(r1);
+            break;
+        }
+        case 2:
+        {
+            arr[k] = new triangle; // треугольник
+            arr[k]->setHeight(r1);
+            arr[k]->setWidth(r2);
+            break;
+        }
+        case 3:
+        {
+            arr[k] = new circle; // круг
+            arr[k]->setWidth(r1);
+            break;
+        }
+        case 4:
+        {
+            arr[k] = new ellipse; // элипс
+            arr[k]->setHeight(r1);
+            arr[k]->setWidth(r2);
+            break;
+        }
+        }
+    }
+    Len = i; // Устанавливаем новый размер
+}
+
 unsigned int BaseArr::getSize()
 {
     return Len;

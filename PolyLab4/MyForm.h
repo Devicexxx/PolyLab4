@@ -19,7 +19,7 @@ namespace PolyLab4 {
 	/// </summary>
 	
 	BaseArr *a;
-	int m_p[8];
+	int m_p[12];
 
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
@@ -154,6 +154,18 @@ private: System::Windows::Forms::TextBox^ textBox7;
 private: System::Windows::Forms::TextBox^ textBox8;
 private: System::Windows::Forms::Label^ label3;
 private: System::Windows::Forms::Label^ label4;
+private: System::Windows::Forms::Label^ label5;
+private: System::Windows::Forms::Label^ label11;
+private: System::Windows::Forms::Label^ label12;
+private: System::Windows::Forms::Label^ label14;
+private: System::Windows::Forms::TextBox^ textBox9;
+private: System::Windows::Forms::TextBox^ textBox10;
+private: System::Windows::Forms::Button^ button7;
+private: System::Windows::Forms::Button^ button8;
+private: System::Windows::Forms::TextBox^ textBox13;
+private: System::Windows::Forms::Button^ button9;
+private: System::Windows::Forms::RichTextBox^ richTextBox1;
+private: System::Windows::Forms::Button^ button10;
 
 	private:
 		/// <summary>
@@ -221,6 +233,18 @@ private: System::Windows::Forms::Label^ label4;
 			this->textBox8 = (gcnew System::Windows::Forms::TextBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label11 = (gcnew System::Windows::Forms::Label());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->label14 = (gcnew System::Windows::Forms::Label());
+			this->textBox9 = (gcnew System::Windows::Forms::TextBox());
+			this->textBox10 = (gcnew System::Windows::Forms::TextBox());
+			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->button8 = (gcnew System::Windows::Forms::Button());
+			this->textBox13 = (gcnew System::Windows::Forms::TextBox());
+			this->button9 = (gcnew System::Windows::Forms::Button());
+			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->button10 = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -424,7 +448,7 @@ private: System::Windows::Forms::Label^ label4;
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(314, 563);
+			this->label2->Location = System::Drawing::Point(17, 510);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(14, 13);
 			this->label2->TabIndex = 27;
@@ -432,7 +456,7 @@ private: System::Windows::Forms::Label^ label4;
 			// 
 			// textBox2
 			// 
-			this->textBox2->Location = System::Drawing::Point(317, 579);
+			this->textBox2->Location = System::Drawing::Point(20, 526);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(123, 20);
 			this->textBox2->TabIndex = 26;
@@ -440,7 +464,7 @@ private: System::Windows::Forms::Label^ label4;
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(314, 515);
+			this->label1->Location = System::Drawing::Point(17, 462);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(14, 13);
 			this->label1->TabIndex = 25;
@@ -448,14 +472,14 @@ private: System::Windows::Forms::Label^ label4;
 			// 
 			// textBox1
 			// 
-			this->textBox1->Location = System::Drawing::Point(317, 531);
+			this->textBox1->Location = System::Drawing::Point(20, 478);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(123, 20);
 			this->textBox1->TabIndex = 24;
 			// 
 			// buttonOut1
 			// 
-			this->buttonOut1->Location = System::Drawing::Point(317, 482);
+			this->buttonOut1->Location = System::Drawing::Point(20, 429);
 			this->buttonOut1->Name = L"buttonOut1";
 			this->buttonOut1->Size = System::Drawing::Size(123, 23);
 			this->buttonOut1->TabIndex = 23;
@@ -562,7 +586,7 @@ private: System::Windows::Forms::Label^ label4;
 			// 
 			this->textBox12->Location = System::Drawing::Point(1084, 355);
 			this->textBox12->Name = L"textBox12";
-			this->textBox12->Size = System::Drawing::Size(123, 20);
+			this->textBox12->Size = System::Drawing::Size(55, 20);
 			this->textBox12->TabIndex = 50;
 			// 
 			// button2
@@ -621,7 +645,7 @@ private: System::Windows::Forms::Label^ label4;
 			// 
 			// button4
 			// 
-			this->button4->Location = System::Drawing::Point(388, 310);
+			this->button4->Location = System::Drawing::Point(307, 301);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(123, 20);
 			this->button4->TabIndex = 53;
@@ -631,14 +655,14 @@ private: System::Windows::Forms::Label^ label4;
 			// 
 			// textBox4
 			// 
-			this->textBox4->Location = System::Drawing::Point(259, 339);
+			this->textBox4->Location = System::Drawing::Point(178, 330);
 			this->textBox4->Name = L"textBox4";
 			this->textBox4->Size = System::Drawing::Size(123, 20);
 			this->textBox4->TabIndex = 52;
 			// 
 			// button5
 			// 
-			this->button5->Location = System::Drawing::Point(388, 339);
+			this->button5->Location = System::Drawing::Point(307, 330);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(123, 20);
 			this->button5->TabIndex = 51;
@@ -648,7 +672,7 @@ private: System::Windows::Forms::Label^ label4;
 			// 
 			// button6
 			// 
-			this->button6->Location = System::Drawing::Point(388, 365);
+			this->button6->Location = System::Drawing::Point(307, 356);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(123, 20);
 			this->button6->TabIndex = 54;
@@ -657,14 +681,14 @@ private: System::Windows::Forms::Label^ label4;
 			// 
 			// textBox5
 			// 
-			this->textBox5->Location = System::Drawing::Point(517, 339);
+			this->textBox5->Location = System::Drawing::Point(436, 330);
 			this->textBox5->Name = L"textBox5";
 			this->textBox5->Size = System::Drawing::Size(123, 20);
 			this->textBox5->TabIndex = 55;
 			// 
 			// textBox6
 			// 
-			this->textBox6->Location = System::Drawing::Point(388, 391);
+			this->textBox6->Location = System::Drawing::Point(307, 382);
 			this->textBox6->Name = L"textBox6";
 			this->textBox6->Size = System::Drawing::Size(123, 20);
 			this->textBox6->TabIndex = 56;
@@ -701,11 +725,128 @@ private: System::Windows::Forms::Label^ label4;
 			this->label4->TabIndex = 28;
 			this->label4->Text = L"X";
 			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(449, 315);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(88, 13);
+			this->label5->TabIndex = 29;
+			this->label5->Text = L"Второая фигура";
+			// 
+			// label11
+			// 
+			this->label11->AutoSize = true;
+			this->label11->Location = System::Drawing::Point(197, 315);
+			this->label11->Name = L"label11";
+			this->label11->Size = System::Drawing::Size(84, 13);
+			this->label11->TabIndex = 28;
+			this->label11->Text = L"Первая фигура";
+			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Location = System::Drawing::Point(449, 463);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(88, 13);
+			this->label12->TabIndex = 60;
+			this->label12->Text = L"Второая фигура";
+			// 
+			// label14
+			// 
+			this->label14->AutoSize = true;
+			this->label14->Location = System::Drawing::Point(197, 463);
+			this->label14->Name = L"label14";
+			this->label14->Size = System::Drawing::Size(84, 13);
+			this->label14->TabIndex = 59;
+			this->label14->Text = L"Первая фигура";
+			// 
+			// textBox9
+			// 
+			this->textBox9->Location = System::Drawing::Point(436, 478);
+			this->textBox9->Name = L"textBox9";
+			this->textBox9->Size = System::Drawing::Size(123, 20);
+			this->textBox9->TabIndex = 63;
+			// 
+			// textBox10
+			// 
+			this->textBox10->Location = System::Drawing::Point(178, 478);
+			this->textBox10->Name = L"textBox10";
+			this->textBox10->Size = System::Drawing::Size(123, 20);
+			this->textBox10->TabIndex = 62;
+			// 
+			// button7
+			// 
+			this->button7->Location = System::Drawing::Point(307, 478);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(123, 20);
+			this->button7->TabIndex = 61;
+			this->button7->Text = L"Копировать в";
+			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &MyForm::button7_Click);
+			// 
+			// button8
+			// 
+			this->button8->Location = System::Drawing::Point(307, 525);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(123, 20);
+			this->button8->TabIndex = 64;
+			this->button8->Text = L"Сортировка";
+			this->button8->UseVisualStyleBackColor = true;
+			this->button8->Click += gcnew System::EventHandler(this, &MyForm::button8_Click);
+			// 
+			// textBox13
+			// 
+			this->textBox13->Location = System::Drawing::Point(1155, 355);
+			this->textBox13->Name = L"textBox13";
+			this->textBox13->Size = System::Drawing::Size(52, 20);
+			this->textBox13->TabIndex = 65;
+			// 
+			// button9
+			// 
+			this->button9->Location = System::Drawing::Point(647, 405);
+			this->button9->Name = L"button9";
+			this->button9->Size = System::Drawing::Size(123, 20);
+			this->button9->TabIndex = 66;
+			this->button9->Text = L"ВЫВОД";
+			this->button9->UseVisualStyleBackColor = true;
+			this->button9->Click += gcnew System::EventHandler(this, &MyForm::button9_Click);
+			// 
+			// richTextBox1
+			// 
+			this->richTextBox1->Location = System::Drawing::Point(590, 431);
+			this->richTextBox1->Name = L"richTextBox1";
+			this->richTextBox1->Size = System::Drawing::Size(242, 164);
+			this->richTextBox1->TabIndex = 67;
+			this->richTextBox1->Text = L"";
+			// 
+			// button10
+			// 
+			this->button10->Location = System::Drawing::Point(158, 12);
+			this->button10->Name = L"button10";
+			this->button10->Size = System::Drawing::Size(123, 20);
+			this->button10->TabIndex = 68;
+			this->button10->Text = L"Задать случайно";
+			this->button10->UseVisualStyleBackColor = true;
+			this->button10->Click += gcnew System::EventHandler(this, &MyForm::button10_Click);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1219, 639);
+			this->Controls->Add(this->button10);
+			this->Controls->Add(this->richTextBox1);
+			this->Controls->Add(this->button9);
+			this->Controls->Add(this->textBox13);
+			this->Controls->Add(this->button8);
+			this->Controls->Add(this->label12);
+			this->Controls->Add(this->label14);
+			this->Controls->Add(this->textBox9);
+			this->Controls->Add(this->textBox10);
+			this->Controls->Add(this->button7);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label11);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->textBox8);
 			this->Controls->Add(this->label4);
@@ -858,8 +999,91 @@ private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void buttonPrint_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	m_p[8] = a->Paint(Convert::ToInt32(textBoxPrint->Text), Convert::ToInt32(textBox7->Text), Convert::ToInt32(textBox8->Text));
-	pictureBox1->Refresh();
+	int i = Convert::ToInt32(textBoxPrint->Text);
+	int x = Convert::ToInt32(textBox7->Text);
+	int y = Convert::ToInt32(textBox8->Text);
+	if (i < (*a).getSize())
+	{
+		int h = a->type(i);
+		switch (h) 
+		{
+		case 1:
+			m_p[0] = x;
+			m_p[1] = y;
+			m_p[2] = x + (*a)[i].GetWidth() * 3;
+			m_p[3] = y;
+			m_p[4] = x;
+			m_p[5] = y + (*a)[i].GetHeight() * 3;
+			m_p[6] = x + (*a)[i].GetWidth() * 3;
+			m_p[7] = y + (*a)[i].GetHeight() * 3;
+			m_p[8] = 0;
+			m_p[9] = 0;
+			m_p[10] = 0;
+			m_p[11] = 0;
+			pictureBox1->Refresh();
+			break;
+		case 2:
+			m_p[0] = x;
+			m_p[1] = y;
+			m_p[2] = x + (*a)[i].GetHeight() * 3;
+			m_p[3] = y;
+			m_p[4] = x;
+			m_p[5] = y + (*a)[i].GetHeight() * 3;
+			m_p[6] = x + (*a)[i].GetHeight() * 3;
+			m_p[7] = y + (*a)[i].GetHeight() * 3;
+			m_p[8] = 0;
+			m_p[9] = 0;
+			m_p[10] = 0;
+			m_p[11] = 0;
+			pictureBox1->Refresh();
+			break;
+		case 3:
+			m_p[0] = x;
+			m_p[1] = y;
+			m_p[2] = x + (*a)[i].GetWidth() * 3;
+			m_p[3] = y + (*a)[i].GetHeight() * 3;
+			m_p[4] = x - (*a)[i].GetWidth() * 3;
+			m_p[5] = y - (*a)[i].GetHeight() * 3;
+			m_p[6] = 0;
+			m_p[7] = 0;
+			m_p[8] = 0;
+			m_p[9] = 0;
+			m_p[10] = 0;
+			m_p[11] = 0;
+			pictureBox1->Refresh();
+			break;
+		case 4:
+			m_p[0] = 0;
+			m_p[1] = 0;
+			m_p[2] = 0;
+			m_p[3] = 0;
+			m_p[4] = 0;
+			m_p[5] = 0;
+			m_p[6] = 0;
+			m_p[7] = 0;
+			m_p[8] = x;
+			m_p[9] = y;
+			m_p[10] = x + (*a)[i].GetWidth() * 1.5;
+			m_p[11] = y + (*a)[i].GetWidth() * 1.5;
+			pictureBox1->Refresh();
+			break;
+		case 5:
+			m_p[0] = 0;
+			m_p[1] = 0;
+			m_p[2] = 0;
+			m_p[3] = 0;
+			m_p[4] = 0;
+			m_p[5] = 0;
+			m_p[6] = 0;
+			m_p[7] = 0;
+			m_p[8] = x;
+			m_p[9] = y;
+			m_p[10] = x + (*a)[i].GetWidth() * 3;
+			m_p[11] = y + (*a)[i].GetHeight() * 3;
+			pictureBox1->Refresh();
+			break;
+		}
+	}
 	return;
 }
 private: System::Void pictureBox1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) 
@@ -897,15 +1121,131 @@ private: System::Void pictureBox1_Paint(System::Object^ sender, System::Windows:
 	}*/
 	e->Graphics->DrawLine(System::Drawing::Pens::Green, m_p[0], m_p[1], m_p[2], m_p[3]);
 	e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[0], m_p[1], m_p[4], m_p[5]);
-	e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[6], m_p[7], m_p[2], m_p[3]);
-	e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[6], m_p[7], m_p[4], m_p[5]);
+	e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[2], m_p[3], m_p[6], m_p[7]);
+	e->Graphics->DrawLine(System::Drawing::Pens::Black, m_p[4], m_p[5], m_p[6], m_p[7]);
+	e->Graphics->DrawEllipse(System::Drawing::Pens::Black, m_p[8], m_p[9], m_p[10], m_p[11]);
 
 }
 private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) 
 {
-	m_p[8] = a->Paint(Convert::ToInt32(textBoxPrint->Text), Convert::ToInt32(textBox7->Text) + 5, Convert::ToInt32(textBox8->Text) + 5);
-	pictureBox1->Refresh();
+	int i = Convert::ToInt32(textBoxPrint->Text);
+	int x = Convert::ToInt32(textBox7->Text);
+	int y = Convert::ToInt32(textBox8->Text);
+	int k = Convert::ToInt32(textBox13->Text);
+	if (i < (*a).getSize())
+	{
+		int h = a->type(i);
+		switch (h)
+		{
+		case 1:
+			m_p[0] = x;
+			m_p[1] = y + k;
+			m_p[2] = x + (*a)[i].GetWidth() * 3 ;
+			m_p[3] = y + k;
+			m_p[4] = x;
+			m_p[5] = y + (*a)[i].GetHeight() * 3 + k;
+			m_p[6] = x + (*a)[i].GetWidth() * 3;
+			m_p[7] = y + (*a)[i].GetHeight() * 3 + k;
+			m_p[8] = 0;
+			m_p[9] = 0;
+			m_p[10] = 0;
+			m_p[11] = 0;
+			pictureBox1->Refresh();
+			break;
+		case 2:
+			m_p[0] = x;
+			m_p[1] = y + k;
+			m_p[2] = x + (*a)[i].GetHeight() * 3 - k;
+			m_p[3] = y;
+			m_p[4] = x;
+			m_p[5] = y + (*a)[i].GetHeight() * 3;
+			m_p[6] = x + (*a)[i].GetHeight() * 3 - k;
+			m_p[7] = y + (*a)[i].GetHeight() * 3 + k;
+			m_p[8] = 0;
+			m_p[9] = 0;
+			m_p[10] = 0;
+			m_p[11] = 0;
+			pictureBox1->Refresh();
+			break;
+		case 3:
+			m_p[0] = x;
+			m_p[1] = y + k;
+			m_p[2] = x + (*a)[i].GetWidth() * 3;
+			m_p[3] = y + (*a)[i].GetHeight() * 3 + k;
+			m_p[4] = x - (*a)[i].GetWidth() * 3;
+			m_p[5] = y - (*a)[i].GetHeight() * 3 + k;
+			m_p[6] = 0;
+			m_p[7] = 0;
+			m_p[8] = 0;
+			m_p[9] = 0;
+			m_p[10] = 0;
+			m_p[11] = 0;
+			pictureBox1->Refresh();
+			break;
+		case 4:
+			m_p[0] = 0;
+			m_p[1] = 0;
+			m_p[2] = 0;
+			m_p[3] = 0;
+			m_p[4] = 0;
+			m_p[5] = 0;
+			m_p[6] = 0;
+			m_p[7] = 0;
+			m_p[8] = x;
+			m_p[9] = y + k;
+			m_p[10] = x + (*a)[i].GetWidth() * 1.5;
+			m_p[11] = y + (*a)[i].GetWidth() * 1.5;
+			pictureBox1->Refresh();
+			break;
+		case 5:
+			m_p[0] = 0;
+			m_p[1] = 0;
+			m_p[2] = 0;
+			m_p[3] = 0;
+			m_p[4] = 0;
+			m_p[5] = 0;
+			m_p[6] = 0;
+			m_p[7] = 0;
+			m_p[8] = x;
+			m_p[9] = y + 20;
+			m_p[10] = x + (*a)[i].GetWidth() * 3;
+			m_p[11] = y + (*a)[i].GetHeight() * 3 + k;
+			pictureBox1->Refresh();
+			break;
+		}
+	}
 	return;
+}
+private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (textBox10->Text->Length < 1 || textBox9->Text->Length < 1)
+		return;
+	int i = Convert::ToInt32(textBox10->Text);
+	int k = Convert::ToInt32(textBox9->Text);
+	a->Change(i, 3, k);
+
+}
+private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	a->sort();
+
+}
+private: System::Void button9_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (richTextBox1->Text->Length > 0)
+		richTextBox1->Text = " ";
+	for (int i; i < a->getSize(); i++)
+	{
+		richTextBox1->Text += Convert::ToString(i) + " - " + "  Тип-  " + Convert::ToString(a->type(i)) + "  S/P-  " + Convert::ToString(a->ret(i)) + "\n";
+	}
+}
+private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) 
+{
+	if (textBoxSetsize->Text->Length < 1)
+		return;
+	int g = Convert::ToInt32(textBoxSetsize->Text);
+	a->setSizerand(g);
+
 }
 };
 }
