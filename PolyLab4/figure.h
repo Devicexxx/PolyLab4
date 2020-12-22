@@ -8,7 +8,7 @@ protected:
 	float S, P;// S-площадь P-периметр
     int Width, Height, type1;
 public:
-    BaseFig() { S = 0; P = 0; type1 = 0; }
+    BaseFig() { Width = 0, Height = 0, S = 0; P = 0; type1 = 0; }
 
     void setS(float i);
     void setP(float i);
@@ -55,6 +55,7 @@ public:
     BaseArr(const BaseArr& TArr);// Конструкор копий
     void setSize(unsigned int i);
     void setSizerand(unsigned int i);
+    void setSizestep(unsigned int i, unsigned int j);
     //void Clear();
 
     BaseFig  operator [] (unsigned int i);
@@ -70,7 +71,7 @@ public:
     int type(unsigned int i);
     void sort();
     void clear();
-
+    String^ getvalue(unsigned int i);
     friend class Basefig;
     friend class intarr;
 };

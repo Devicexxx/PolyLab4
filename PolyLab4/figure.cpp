@@ -245,6 +245,8 @@ bool BaseArr::comparison(unsigned int i, unsigned int j, unsigned int type)
 
 int BaseArr::type(unsigned int i)
 {
+    if (arr[i]->GetType() == NULL)
+        throw 10;
     return (arr[i]->GetType());
 }
 
@@ -327,12 +329,87 @@ void BaseArr::setSizerand(unsigned int i)
     Len = i; // Устанавливаем новый размер
 }
 
+void BaseArr::setSizestep(unsigned int i, unsigned int j)
+{
+    for (int k = 0; k < i; k++)
+    {
+        
+        switch (k % 5)
+        {
+        case 0:
+        {
+            arr[k] = new rectangle;
+            arr[k]->setHeight(j);
+            arr[k]->setWidth(j+2);
+            j += j;
+            break;
+        }
+        case 1:
+        {
+            arr[k] = new square; // квадрат
+            arr[k]->setHeight(j);
+            j += j;
+            break;
+        }
+        case 2:
+        {
+            arr[k] = new triangle; // треугольник
+            arr[k]->setHeight(j);
+            arr[k]->setWidth(j+2);
+            j += j;
+            break;
+        }
+        case 3:
+        {
+            arr[k] = new circle; // круг
+            arr[k]->setWidth(j);
+            j += j;
+            break;
+        }
+        case 4:
+        {
+            arr[k] = new ellipse; // элипс
+            arr[k]->setHeight(j);
+            arr[k]->setWidth(j+2);
+            break;
+        }
+        }
+    }
+    Len = i;
+}
+
 unsigned int BaseArr::getSize()
 {
     return Len;
 }
 
-
+String^ BaseArr::getvalue(unsigned int i)
+{
+    int k = arr[i]->GetType();
+    switch (k)
+    {
+    case 1:
+    {
+        return (" ширина- " + Convert::ToString(arr[i]->GetWidth()) + " высота- " + Convert::ToString(arr[i]->GetHeight()));
+    }
+    case 2:
+    {
+        return (" сторона- " + Convert::ToString(arr[i]->GetHeight()));
+    }
+    case 3:
+    {
+        return (" основание- " + Convert::ToString(arr[i]->GetWidth()) + " высота- " + Convert::ToString(arr[i]->GetHeight()));
+    }
+    case 4:
+    {
+        return (" радиус- " + Convert::ToString(arr[i]->GetWidth()));
+    }
+    case 5:
+    {
+        return (" а- " + Convert::ToString(arr[i]->GetHeight()) + " b- " + Convert::ToString(arr[i]->GetWidth()));
+    }
+    }
+}
 //прямоугольник
 
 float rectangle::GetS()
